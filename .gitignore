@@ -339,4 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-.vs/
+SlimesGame/SlimesGame.vcxproj
+SlimesGame/SlimesGame.vcxproj.filters
+SlimesGame/SlimesGame.vcxproj.user
