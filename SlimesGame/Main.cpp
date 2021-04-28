@@ -22,13 +22,19 @@ int main()
         printf("There was an error loading slime texture!");
     }
 
-
+    sf::Texture grassTexture;
+    if (!grassTexture.loadFromFile("./assets/grass.png")) {
+        printf("There was an error loading grass texture!");
+    }
+    grassTexture.setRepeated(true);
     
-
-
 
     sf::Sprite slimeSprite;
     slimeSprite.setTexture(slimeTexture);
+    sf::Sprite grassSprite;
+    grassSprite.setTexture(grassTexture);
+    grassSprite.setTextureRect(sf::IntRect(0, 0, 100000, 100000));
+
 
     // window.setKeyRepeatEnabled(false);
 
@@ -60,7 +66,7 @@ int main()
         //playerPos.y += pyv;
 
         window.clear(sf::Color::Black);
-
+        window.draw(grassSprite);
         slimeSprite.move(pxv, pyv);
         view.move(pxv, pyv);
         window.draw(slimeSprite);
