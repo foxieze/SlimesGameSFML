@@ -33,21 +33,13 @@ int main()
         }
 
         // Key Press Detection
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             if (abs(pyv) < 6) pyv -= 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            if (abs(pyv) < 6) pyv -= 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             if (abs(pyv) < 6) pyv += 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            if (abs(pyv) < 6) pyv += 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             if (abs(pxv) < 6) pxv -= 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            if (abs(pxv) < 6) pxv -= 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            if (abs(pxv) < 6) pxv += 0.1;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             if (abs(pxv) < 6) pxv += 0.1;
 
         pxv *= 0.75;
