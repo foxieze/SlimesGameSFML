@@ -15,13 +15,28 @@ int main()
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    sf::View view(sf::FloatRect(0, 0, 800, 600));
+    view.setCenter(30, 30);
+    window.setView(view);
+
     sf::Texture slimeTexture;
     if (!slimeTexture.loadFromFile("./assets/slime.png")) {
         printf("There was an error loading slime texture!");
     }
 
+    sf::Texture grassTexture;
+    if (!grassTexture.loadFromFile("./assets/grass.png")) {
+        printf("There was an error loading grass texture!");
+    }
+    grassTexture.setRepeated(true);
+    
+
     sf::Sprite slimeSprite;
     slimeSprite.setTexture(slimeTexture);
+    sf::Sprite grassSprite;
+    grassSprite.setTexture(grassTexture);
+    grassSprite.setTextureRect(sf::IntRect(0, 0, 100000, 100000));
+
 
     // Delta Time
     sf::Clock clock;
@@ -55,9 +70,11 @@ int main()
         pyv *= 0.75;
 
         window.clear(sf::Color::Black);
-
+        window.draw(grassSprite);
         slimeSprite.move(pxv, pyv);
+        view.move(pxv, pyv);
         window.draw(slimeSprite);
+        window.setView(view);
         window.display();
     }
 
