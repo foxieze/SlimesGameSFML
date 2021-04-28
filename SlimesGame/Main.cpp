@@ -9,6 +9,8 @@ int main()
     float pxv = 0.f;
     float pyv = 0.f;
 
+    float acceleration = 100.f;
+
     sf::RenderWindow window(sf::VideoMode(800, 600), "That Time I Got Reincarnated as a Slime", sf::Style::Titlebar | sf::Style::Close);
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
@@ -21,10 +23,17 @@ int main()
     sf::Sprite slimeSprite;
     slimeSprite.setTexture(slimeTexture);
 
-    // window.setKeyRepeatEnabled(false);
+    // Delta Time
+    sf::Clock clock;
+    float deltaTime;
+
+    
 
     while (window.isOpen())
     {
+        sf::Time time = clock.restart();
+        deltaTime = time.asSeconds();
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -34,21 +43,16 @@ int main()
 
         // Key Press Detection
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            if (abs(pyv) < 6) pyv -= 0.1;
+            if (abs(pyv) < 6) pyv -= acceleration * deltaTime;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-            if (abs(pyv) < 6) pyv += 0.1;
+            if (abs(pyv) < 6) pyv += acceleration * deltaTime;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-            if (abs(pxv) < 6) pxv -= 0.1;
+            if (abs(pxv) < 6) pxv -= acceleration * deltaTime;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-            if (abs(pxv) < 6) pxv += 0.1;
+            if (abs(pxv) < 6) pxv += acceleration * deltaTime;
 
         pxv *= 0.75;
         pyv *= 0.75;
-
-        printf("PXV: %f \n", pxv);
-
-        //playerPos.x += pxv;
-        //playerPos.y += pyv;
 
         window.clear(sf::Color::Black);
 
