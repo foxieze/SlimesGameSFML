@@ -13,10 +13,19 @@ int main()
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
+    sf::View view(sf::FloatRect(0, 0, 800, 600));
+    view.setCenter(30, 30);
+    window.setView(view);
+
     sf::Texture slimeTexture;
     if (!slimeTexture.loadFromFile("./assets/slime.png")) {
         printf("There was an error loading slime texture!");
     }
+
+
+    
+
+
 
     sf::Sprite slimeSprite;
     slimeSprite.setTexture(slimeTexture);
@@ -53,7 +62,9 @@ int main()
         window.clear(sf::Color::Black);
 
         slimeSprite.move(pxv, pyv);
+        view.move(pxv, pyv);
         window.draw(slimeSprite);
+        window.setView(view);
         window.display();
     }
 
