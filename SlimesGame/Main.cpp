@@ -72,7 +72,10 @@ int main()
         window.clear(sf::Color::Black);
         window.draw(grassSprite);
         slimeSprite.move(pxv, pyv);
-        view.move(pxv, pyv);
+
+        sf::Vector2f cameraMovement = slimeSprite.getPosition() - view.getCenter();
+        view.move(cameraMovement * deltaTime);
+        
         window.draw(slimeSprite);
         window.setView(view);
         window.display();
